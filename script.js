@@ -22,40 +22,32 @@ function startWebCam() {
     .catch((error) => {
       console.error("Error accessing the webcam:", error);
     });
-
-  video.addEventListener("loadeddata", () => {
-    initializeCanvas();
-  });
 }
 
 // Dynamically create a canvas from the video element
 let canvas;
-
-function initializeCanvas() {
+video.addEventListener("play", () => {
   canvas = faceapi.createCanvasFromMedia(video);
-  document.body.appendChild(canvas);
+  document.body.append(canvas);
 
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
   detectAndDraw();
-}
+});
 
 // Adjust canvas size to always match video dimensions
 function resizeCanvas() {
   const displaySize = { width: video.videoWidth, height: video.videoHeight };
-  if (canvas) {
-    canvas.width = displaySize.width;
-    canvas.height = displaySize.height;
-    faceapi.matchDimensions(canvas, displaySize);
-  }
+  canvas.width = displaySize.width;
+  canvas.height = displaySize.height;
+
+  faceapi.matchDimensions(canvas, displaySize);
 }
 
 // Main function to handle detection and drawing on a timer
 function detectAndDraw() {
   setInterval(async () => {
-    if (!canvas) return; // Ensure canvas is initialized
-
     const detections = await faceapi
       .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
       .withFaceLandmarks()
