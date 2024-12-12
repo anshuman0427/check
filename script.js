@@ -49,7 +49,7 @@ video.addEventListener("play", () => {
     resizedDetections.forEach((detection) => {
       const { age, gender } = detection;
       const box = detection.detection.box;
-      const label = `${Math.round(age)} years old ${gender}`;
+      const label = `${Math.round(age)} , ${gender}`;
       const drawBox = new faceapi.draw.DrawBox(box, { label });
       drawBox.draw(canvas);
     });
