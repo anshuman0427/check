@@ -1,6 +1,4 @@
-/* General body reset and full-screen video */
-html,
-body {
+body{
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -10,23 +8,6 @@ body {
     align-items: center;
 }
 
-/* Style for the video feed */
-video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-/* Style the canvas with a subtle light background */
-canvas {
+canvas{
     position: absolute;
-    background-color: rgba(240, 240, 240, 0.3); /* Subtle light gray with transparency */
-    z-index: 10;
-}
-
-/* Modernize facial landmarks with light colors */
-.face-landmark {
-    stroke: #86dfda; /* Light green for landmarks */
-    stroke-width: 2;
-    fill: none;
 }
