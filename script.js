@@ -42,7 +42,7 @@ video.addEventListener("play", () => {
 
     faceapi.draw.drawDetections(canvas, resizedWindow, {color: "#D2FFF0FF"});
     faceapi.draw.drawFaceLandmarks(canvas, resizedWindow, {color: "#68FF5AFF"});
-    faceapi.draw.drawFaceExpressions(canvas, resizedWindow, {color: "#333333"});
+    faceapi.draw.drawFaceExpressions(canvas, resizedWindow, {color: "#F33B3BFF"});
 
     resizedWindow.forEach((detection) => {
       const box = detection.detection.box;
