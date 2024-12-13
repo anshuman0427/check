@@ -44,16 +44,6 @@ video.addEventListener("play", () => {
     faceapi.draw.drawFaceLandmarks(canvas, resizedWindow);
     faceapi.draw.drawFaceExpressions(canvas, resizedWindow);
 
-    detectedData.numberOfPeople = resizedWindow.length;
-    detectedData.agesAndGenders = resizedWindow.map((detection) => {
-      return `Age: ${Math.round(detection.age)}, Gender: ${detection.gender}`;
-    }).join("\n");
-
-    detectedData.expressions = resizedWindow.map((detection) => {
-      return Object.entries(detection.expressions)
-        .map(([expression, value]) => `${expression}: ${Math.round(value * 100)}%`)
-        .join(", ");
-    }).join("\n");
 
     resizedWindow.forEach((detection) => {
       const box = detection.detection.box;
@@ -70,22 +60,4 @@ video.addEventListener("play", () => {
 });
 
 
-document.getElementById("sendEmail").addEventListener("click", () => {
-  // Send email using Email.js
-  emailjs.init("C0ErMorIVb9w3JerN"); // Replace with your Email.js user ID
-  
-  const emailParams = {
-    number_of_people: detectedData.numberOfPeople,
-    ages_and_genders: detectedData.agesAndGenders,
-    expressions: detectedData.expressions,
-    reply_to: "anshuman0427@yahoo.com",
-  };
 
-  emailjs.send("service_iqwcsdj", "template_47c9v2q", emailParams)
-    .then((response) => {
-      console.log("Email sent successfully:", response);
-    })
-    .catch((error) => {
-      console.error("Error sending email:", error);
-    });
-});
