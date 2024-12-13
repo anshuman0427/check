@@ -40,9 +40,9 @@ video.addEventListener("play", () => {
       width: video.width,
     });
 
-    faceapi.draw.drawDetections(canvas, resizedWindow, {color: "#D2FFF0FF"});
-    faceapi.draw.drawFaceLandmarks(canvas, resizedWindow, {color: "#68FF5AFF"});
-    faceapi.draw.drawFaceExpressions(canvas, resizedWindow, {color: "#F33B3BFF"});
+    faceapi.draw.drawDetections(canvas, resizedWindow, {FillStyle: "#D2FFF0FF"});
+    faceapi.draw.drawFaceLandmarks(canvas, resizedWindow, {FillStyle: "#68FF5AFF"});
+    faceapi.draw.drawFaceExpressions(canvas, resizedWindow, {FillStyle: "#F33B3BFF"});
 
     resizedWindow.forEach((detection) => {
       const box = detection.detection.box;
