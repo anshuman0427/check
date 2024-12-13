@@ -40,16 +40,14 @@ video.addEventListener("play", () => {
       width: video.width,
     });
 
-    faceapi.draw.drawDetections(canvas, resizedWindow, {color: "#D2FFF0FF"});
-    faceapi.draw.drawFaceLandmarks(canvas, resizedWindow, {color: "#68FF5AFF"});
-    faceapi.draw.drawFaceExpressions(canvas, resizedWindow, {color: "#F33B3BFF"});
+    faceapi.draw.drawDetections(canvas, resizedWindow);
+    faceapi.draw.drawFaceLandmarks(canvas, resizedWindow);
+    faceapi.draw.drawFaceExpressions(canvas, resizedWindow);
 
     resizedWindow.forEach((detection) => {
       const box = detection.detection.box;
       const drawBox = new faceapi.draw.DrawBox(box, {
         label: Math.round(detection.age) + " year old " + detection.gender,
-        boxColor: "#0279F9FF", // Set detection box color
-    lineWidth: 3,
       });
       drawBox.draw(canvas);
     });
